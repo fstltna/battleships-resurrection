@@ -1,0 +1,29 @@
+name: battleships-resurrection # you probably want to 'snapcraft register <name>'
+base: core18 # the base snap is the execution environment for this snap
+version: '1.1.2' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Great version of the classic board game Battleships
+description: |
+   Great version of the classic board game Battleships
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+icon:  battleships_icon.png
+title: Battleships Resurrection
+
+apps:
+  battleships-resurrection:
+    command: battleships-resurrection
+parts:
+  battleships-resurrection:
+    # See 'snapcraft plugins'
+    plugin: dump
+    source: .
+#    build-packages: [default-jre]
+#    stage-packages: [default-jre]
+    organize:
+      battleships-resurrection: build/
+      battleships-resurrection.1: man/man1/
+
+architectures:
+  - build-on: amd64
+
